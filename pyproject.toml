@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sddlmaker"
+version = "0.1.0"
+description = "A tool to build and analyze Windows Security Descriptor Definition Language (SDDL) strings."
+authors = ["Michael Haag <5632822+MHaggis@users.noreply.github.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,!=3.9.7,<4.0"
+streamlit = "^1.31.0"
+streamlit-markmap = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -352,7 +352,7 @@ def main():
     if "sacl_selections" not in st.session_state:
         st.session_state.sacl_selections = []
 
-    st.title("SDDL Parser and Builder")
+    st.title("The SDDLMaker")
 
     tab1, tab2, tab3, tab4 = st.tabs(["Parser", "Builder", "Reference", "Mindmap"])
 
@@ -572,12 +572,23 @@ def main():
     with tab4:
         st.header("SDDL Structure Mind Map")
         
-        mindmap_data = get_sddl_mindmap_data()
-        html_template = get_d3_mindmap_html()
+        github_image_url = "https://raw.githubusercontent.com/MHaggis/SDDLMaker/main/MindMap/SDDL%20Demystified%20Mind%20Map.png"
         
-        html_content = html_template % json.dumps(mindmap_data)
+        try:
+            st.image(github_image_url, 
+                    caption="SDDL Structure Mind Map",
+                    use_container_width=True)
+        except Exception as e:
+            st.error(f"Unable to load mind map image: {str(e)}")
+            st.info("Please view the mind map using the links below.")
         
-        st.components.v1.html(html_content, height=800, width=None, scrolling=True)
+        st.markdown("""
+        ### External Links
+        View and download the mind map:
+        
+        - [SDDL Demystified Mind Map (PDF)](https://github.com/MHaggis/SDDLMaker/blob/main/MindMap/SDDL%20Demystified%20Mind%20Map.pdf)
+        - [Mind Map Directory](https://github.com/MHaggis/SDDLMaker/tree/main/MindMap)
+        """)
 
 def process_ace(ace_str: str, ace_type: str):
     """Helper function to process and display ACE information."""
